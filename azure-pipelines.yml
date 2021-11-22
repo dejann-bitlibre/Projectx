@@ -47,8 +47,8 @@ steps:
     downloadPath: '$(System.ArtifactsDirectory)'
 - task: AzureRmWebAppDeployment@4
   inputs:
-  ConnectionType: 'AzureRM'
-  azureSubscription: 'a82ff9af-8108-4887-abd9-34c33bb4f063'
-  appType: 'webApp'
-  WebAppName: 'projectx-dejann'
-  packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'a82ff9af-8108-4887-abd9-34c33bb4f063'
+    appType: 'webApp'
+    WebAppName: 'projectx-dejann'
+    packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
