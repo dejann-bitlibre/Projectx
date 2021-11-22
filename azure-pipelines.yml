@@ -32,3 +32,14 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'CS-SUB-0465(48f476c4-d6ee-4ba2-93d4-01f24e85ff85)'
+    appType: 'webApp'
+    WebAppName: 'projectx-dejann'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'ProjectX'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
