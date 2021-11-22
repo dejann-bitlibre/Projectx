@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: linux
 
 variables:
   solution: '**/*.sln'
@@ -43,15 +43,12 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'single'
-    artifactName: 'drop'
+#    artifactName: 'drop'
     downloadPath: '$(System.ArtifactsDirectory)'
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'CS-SUB-0465(48f476c4-d6ee-4ba2-93d4-01f24e85ff85)'
-    appType: 'webApp'
-    appName: 'projectx-dejann2'
-    deployToSlotOrASE: true
-    resourceGroupName: 'ProjectX'
-    slotName: 'production'
-    package: '$(System.ArtifactsDirectory)/drop/*.zip'
-    deploymentMethod: 'auto'
+- task: AzureRmWebAppDeployment@4
+inputs:
+ConnectionType: 'AzureRM'
+azureSubscription: 'a82ff9af-8108-4887-abd9-34c33bb4f063'
+appType: 'webApp'
+WebAppName: 'projectx-dejann'
+packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
