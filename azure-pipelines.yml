@@ -35,10 +35,10 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-#    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    PathtoPublish: '$(System.DefaultWorkingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'CS-SUB-0465(48f476c4-d6ee-4ba2-93d4-01f24e85ff85)'
@@ -47,5 +47,5 @@ steps:
     deployToSlotOrASE: true
     resourceGroupName: 'ProjectX'
     slotName: 'production'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/drop/*.zip'
     deploymentMethod: 'auto'
